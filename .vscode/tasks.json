@@ -17,8 +17,14 @@
             }
         },
         {
-            "label": "CMake Generate",
+            "label": "create build directory",
             "type": "shell",
+            "command": "mkdir -p build",
+        },
+        {
+            "label": "CMake generate",
+            "type": "shell",
+            "dependsOn": ["create build directory"],
             "command": "cmake -G \"Unix Makefiles\" -DCMAKE_TOOLCHAIN_FILE=../arm-none-eabi-gcc.cmake -DCMAKE_BUILD_TYPE=Debug ..",
             "options": {
                 "cwd": "${workspaceFolder}/build"

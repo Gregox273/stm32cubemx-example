@@ -5,14 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "OpenOCD Debug",
+            "name": "External GDB Server Debug",
             "cwd": "${workspaceRoot}",
             "executable": "./build/stm32cubemx-example.elf",
             "request": "launch",
             "type": "cortex-debug",
 
-            // When running in a container on Windows, openocd needs to be started
-            // in Windows before attempting to connect to the gdbserver here.
+            // Windows does not allow COM ports to pass through to container
+            // We need to manually start the GDB server on the host, then connect to it here.
             "servertype": "external",
             "gdbTarget": "host.docker.internal:3333",
 
